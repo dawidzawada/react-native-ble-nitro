@@ -3,6 +3,7 @@ import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Scanner from "./Scanner";
+import { ble } from "./src/bluetooth-instance";
 
 export default function App() {
   const [shouldRenderScanner, setShouldRenderScanner] = useState(false);
@@ -28,6 +29,13 @@ export default function App() {
               <Button
                 title="Render scanner"
                 onPress={() => setShouldRenderScanner(true)}
+              />
+              <Button
+                title="Lazy init manually"
+                onPress={() => {
+                  console.log('click')
+                  ble.iosLazyInit()
+                }}
               />
             </View>
           )}
